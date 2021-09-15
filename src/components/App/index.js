@@ -4,11 +4,11 @@ import Display from '../Display';
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [requestMade, setRequestMade] = useState(true);
+  const [requestMade, setRequestMade] = useState(false);
   return (
     <main className="App">
       <header>
-        <h1>Fujin Flights</h1>
+        <h1>Swifter Flights</h1>
         <h2 className="subtitle">Getting you there fast!</h2>
       </header>
       {!loading && requestMade ? (
