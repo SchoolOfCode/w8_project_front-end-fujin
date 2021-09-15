@@ -5,7 +5,7 @@ import Form from "../Form";
 function App() {
   const [departurePort, setDeparturePort] = useState({ name: " ", code: " " });
   const [arrivalPort, setArrivalPort] = useState({ name: " ", code: " " });
-  const [departureDate, setDepartureDate] = useState("");
+  const [departureDate, setDepartureDate] = useState((new Date()).toLocaleDateString('en-CA'));
 
   function chosenDepAirport(portName, portCode) {
     setDeparturePort({name: portName, code: portCode });
@@ -20,6 +20,12 @@ function App() {
   function dateChange(event) {
     setDepartureDate(event.target.value)
     console.log(departureDate)
+  }
+
+  async function getFlights(departurePort, arrivalPort, departureDate) {
+    const response = await fetch(`http://localhost:5000/flights/?DepartureAirport=${departurePort.code}&ArrivalAirport=${arrivalPort.code}&DepartureDate=${departureDate}`);
+    const { payload } = await response.json();
+    console.log(payload);    
   }
 
   return (
@@ -45,8 +51,12 @@ function App() {
       </h3>
 
       <h3>Departure Date</h3>
-      <input type="date" onChange={dateChange} value={(new Date()).toLocaleDateString('en-CA') }></input>
+      <input type="date" onChange={dateChange} value={departureDate }></input>
 
+      <br></br>
+
+      <button onClick={()=>getFlights(departurePort, arrivalPort, departureDate)}>Find flights</button>
+      
     </div>
 
     

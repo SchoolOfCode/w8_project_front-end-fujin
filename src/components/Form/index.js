@@ -9,42 +9,39 @@ function Form({ state, chosenAirport }) {
     setCity(event.target.value);
   }
 
-  /*
-  function addAirports(payload) {
-    setAirports(payload);
-    console.log(airports);
-  }
-  */
-
   async function getAiportByCity(city) {
     const response = await fetch(`http://localhost:5000/airports?city=${city}`);
     const { payload } = await response.json();
-    console.log(payload);
-    setAirports(payload);
+    if (payload.length === 0 ) {setAirports([{airport_name: "No Aiports found", city_name: "Check spelling"}])} else {setAirports(payload)};
   }
-  console.log(state);
+
 
   return (
     <section>
       <input
         type="text"
         name="city"
-        placeholder="Enter Departure City"
+        placeholder="Enter City"
         onChange={handleChange}
         value={city}
         required
       ></input>
       <button onClick={() => getAiportByCity(city)}>Show Airports</button>
-      {airports.length > 0 ? airports.map((item) => {
+      
+      
+      {airports.map((item) => {
         return (
           <li
             onClick={() => chosenAirport(item.airport_name, item.airport_code)}
           >
-            {item.airport_name}, {item.city_name}
+            {item.airport_name} : {item.city_name}
           </li>
         );
-      }) : <h5>No airports found</h5>}
+      })}
+
       {state ? <h5>You have chosen {state.name}</h5> : ""}
+
+      
     </section>
   );
 }
