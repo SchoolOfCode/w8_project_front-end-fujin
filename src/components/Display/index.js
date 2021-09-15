@@ -1,10 +1,12 @@
 import React from "react";
 import Flight from '../Flight'
 import {v4 as uuidv4} from 'uuid';
+import './display.css';
 
 function Display({ flights }) {
   return (
-    <section>
+    <section className='display'>
+      <h1>Available flights</h1>
       {flights.map(
         ({
           dateTime,

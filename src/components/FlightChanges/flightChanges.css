@@ -1,0 +1,8 @@
+.flight-changes ul {
+    list-style: url('../../images/airplane.svg');
+}
+
+.flight-changes li {
+    margin: 1em 0 0;
+    padding-left: 1em;
+}

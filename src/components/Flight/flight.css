@@ -48,9 +48,13 @@
 
 .flight-info section {
   background: var(--light-grey);
-  padding: 1em;
+  padding: 1em 3em;
+  margin: 1.5em;
 
   width: 40%;
+
+  border: 1px solid var(--dark-grey);
+  border-radius: 1em;
 }
 
 .flight button {

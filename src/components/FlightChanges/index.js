@@ -3,7 +3,7 @@ import './flightChanges.css';
 
 function FlightChanges({ changes }) {
   return (
-    <section>
+    <section className='flight-changes'>
       <h4>
         {changes.numberOfStops} Flight{' '}
         {changes.numberOfStops === 1 ? 'Change' : 'Changes'}
