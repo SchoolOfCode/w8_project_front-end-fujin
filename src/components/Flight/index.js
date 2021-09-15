@@ -2,8 +2,8 @@ import React from 'react';
 import FlightChanges from '../FlightChanges';
 import './flight.css';
 
-const tick = '';
-const empty = '';
+import tick from '../../images/checkBox.svg';
+import empty from '../../images/emptyCheckBox.svg';
 
 function Flight({
   dateTime,

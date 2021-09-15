@@ -5,11 +5,30 @@
   background: var(--white);
   width: fit-content;
 
+  margin: 2em;
   padding: 2em 4em;
+
+  border: 1px solid var(--light-grey);
+  border-radius: 0.75em;
+}
+
+.flight h3 {
+  margin: 0 0 2em;
 }
 
 .flight button {
   align-self: flex-end;
+
+  background: var(--dark-blue);
+  color: var(--white);
+
+  border: none;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.flight button:hover {
+  opacity: 0.8;
 }
 
 .flight-info {
@@ -19,7 +38,12 @@
 
 .flight span {
   display: flex;
-  align-items: baseline;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flight span p {
+  font-weight: bold;
 }
 
 .flight-info section {
@@ -36,4 +60,8 @@
   padding: 0.75em 1.5em;
 
   border-radius: 1em;
+}
+
+.flight img {
+  width: 1.5em;
 }
