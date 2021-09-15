@@ -18,7 +18,7 @@ function Form({ state, chosenAirport }) {
     const response = await fetch(`http://localhost:5000/airports?city=${city}`);
     const { payload } = await response.json();
     console.log(payload);
-    addAirports(payload);
+    setAirports(payload);
   }
   console.log(state);
 
@@ -33,7 +33,7 @@ function Form({ state, chosenAirport }) {
         required
       ></input>
       <button onClick={() => getAiportByCity(city)}>Show Airports</button>
-      {airports.map((item) => {
+      {airports.length > 0 ? airports.map((item) => {
         return (
           <li
             onClick={() => chosenAirport(item.airport_name, item.airport_code)}
@@ -41,7 +41,7 @@ function Form({ state, chosenAirport }) {
             {item.airport_name}, {item.city_name}
           </li>
         );
-      })}
+      }) : <h5>No airports found</h5>}
       {state ? <h5>You have chosen {state.name}</h5> : ""}
     </section>
   );

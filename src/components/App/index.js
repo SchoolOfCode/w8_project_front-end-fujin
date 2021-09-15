@@ -4,9 +4,15 @@ import Form from "../Form";
 
 function App() {
   const [departurePort, setDeparturePort] = useState({ name: " ", code: " " });
+  const [arrivalPort, setArrivalPort] = useState({ name: " ", code: " " });
 
   function chosenDepAirport(portName, portCode) {
-    setDeparturePort({ ...departurePort, name: portName, code: portCode });
+    setDeparturePort({name: portName, code: portCode });
+    // console.log(departurePort);
+  }
+
+  function chosenArrAirport(portName, portCode) {
+    setArrivalPort({name: portName, code: portCode });
     // console.log(departurePort);
   }
 
@@ -26,7 +32,10 @@ function App() {
 
       <h3>
         Arrival
-        <Form id="arrive" />
+        <Form 
+          id="arrive"
+          state={arrivalPort}
+          chosenAirport={chosenArrAirport}/>
       </h3>
     </div>
   );
