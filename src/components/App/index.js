@@ -5,6 +5,7 @@ import Form from "../Form";
 function App() {
   const [departurePort, setDeparturePort] = useState({ name: " ", code: " " });
   const [arrivalPort, setArrivalPort] = useState({ name: " ", code: " " });
+  const [departureDate, setDepartureDate] = useState("");
 
   function chosenDepAirport(portName, portCode) {
     setDeparturePort({name: portName, code: portCode });
@@ -14,6 +15,11 @@ function App() {
   function chosenArrAirport(portName, portCode) {
     setArrivalPort({name: portName, code: portCode });
     // console.log(departurePort);
+  }
+
+  function dateChange(event) {
+    setDepartureDate(event.target.value)
+    console.log(departureDate)
   }
 
   return (
@@ -37,7 +43,15 @@ function App() {
           state={arrivalPort}
           chosenAirport={chosenArrAirport}/>
       </h3>
+
+      <h3>Departure Date</h3>
+      <input type="date" onChange={dateChange} value={(new Date()).toLocaleDateString('en-CA') }></input>
+
     </div>
+
+    
+
+    
   );
 }
 

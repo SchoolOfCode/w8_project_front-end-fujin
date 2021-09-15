@@ -9,10 +9,12 @@ function Form({ state, chosenAirport }) {
     setCity(event.target.value);
   }
 
+  /*
   function addAirports(payload) {
     setAirports(payload);
     console.log(airports);
   }
+  */
 
   async function getAiportByCity(city) {
     const response = await fetch(`http://localhost:5000/airports?city=${city}`);
