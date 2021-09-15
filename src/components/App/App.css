@@ -1,11 +1,36 @@
 .App header {
+  position: relative;
   background: var(--light-blue);
+  object-fit: cover;
   padding: 1em;
 
   text-align: center;
 }
 
+.App header::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: '';
+
+  background: url('../../images/artturi-jalli-WUYFbcqrtiw-unsplash.jpg');
+  background-size: cover;
+
+  opacity: 0.75;
+}
+
+.App h1 {
+  position: relative;
+  font-size: 3rem;
+  font-family: 'Bad Script', sans-serif;
+  letter-spacing: 0.06em;
+}
+
 .subtitle {
+  position: relative;
   font-weight: 400;
+  font-size: 1.2rem;
   font-style: italic;
 }

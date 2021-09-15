@@ -17,24 +17,27 @@ function Flight({
 }) {
   return (
     <section className="flight">
-      <h2>
-        {dateTime} - {departureAirport} to {arrivalAirport}
-      </h2>
-      <h3>
-        {airline} {flightNumber}
-      </h3>
+      <div className="key-facts">
+        <h3>
+          {dateTime} — {departureAirport} to {arrivalAirport}
+        </h3>
+        <h4>
+          {airline} {flightNumber}
+        </h4>
+        <button>Book</button>
+      </div>
       <div className="flight-info">
         <FlightChanges changes={changes} />
-        <section>
+        <section className="booking-options">
           <span>
-            <p>Electronic ticketing:</p>
+            <p>Electronic ticketing available:</p>
             <img
               src={isElectronicTicketing ? tick : empty}
               alt={isElectronicTicketing ? 'checkmark' : 'unticked box'}
             />
           </span>
           <span>
-            <p>Automated checkin:</p>
+            <p>Automated checkin available:</p>
             <img
               src={isAutomatedCheckin ? tick : empty}
               alt={isAutomatedCheckin ? 'checkmark' : 'unticked box'}
@@ -42,7 +45,6 @@ function Flight({
           </span>
         </section>
       </div>
-      <button>Book</button>
     </section>
   );
 }

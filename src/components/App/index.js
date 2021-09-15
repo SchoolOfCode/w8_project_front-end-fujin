@@ -4,7 +4,7 @@ import Display from '../Display';
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [requestMade, setRequestMade] = useState(false);
+  const [requestMade, setRequestMade] = useState(true);
   return (
     <main className="App">
       <header>

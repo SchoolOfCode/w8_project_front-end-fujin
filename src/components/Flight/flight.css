@@ -3,17 +3,19 @@
   flex-direction: column;
 
   background: var(--white);
-  width: fit-content;
+  width: 60%;
 
   margin: 2em;
   padding: 2em 4em;
 
   border: 1px solid var(--light-grey);
   border-radius: 0.75em;
+
+  color: var(--dark-grey);
 }
 
-.flight h3 {
-  margin: 0 0 2em;
+.key-facts h4 {
+  margin: 0 0 1em;
 }
 
 .flight button {
@@ -32,40 +34,56 @@
 }
 
 .flight-info {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3em;
+}
+
+.flight-info section:last-child {
+  grid-column: 2 / -1;
 }
 
 .flight span {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .flight span p {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .flight-info section {
   background: var(--light-grey);
   padding: 1em 3em;
-  margin: 1.5em;
+  margin: 1.5em 0;
 
-  width: 40%;
-
-  border: 1px solid var(--dark-grey);
+  border: 1px solid var(--grey);
   border-radius: 1em;
 }
 
 .flight button {
-  font-size: 1.1rem;
+  font-size: 1rem;
 
-  margin: 1.5em 1em 1em;
   padding: 0.75em 1.5em;
 
-  border-radius: 1em;
+  border-radius: 0.75em;
+
+  grid-column: 2;
+  grid-row: 1;
+  align-self: baseline;
 }
 
 .flight img {
   width: 1.5em;
+}
+
+.key-facts {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  align-items: baseline;
+
+  border-bottom: 1px solid var(--grey);
+  margin-bottom: 1em;
 }
