@@ -6,7 +6,8 @@ import tick from '../../images/checkBox.svg';
 import empty from '../../images/emptyCheckBox.svg';
 
 function Flight({
-  dateTime,
+  depDateTime,
+  arrDateTime,
   departureAirport,
   arrivalAirport,
   airline,
@@ -19,10 +20,11 @@ function Flight({
     <section className="flight">
       <div className="key-facts">
         <h3>
-          {dateTime} — {departureAirport} to {arrivalAirport}
+          {depDateTime} - {arrDateTime} | {departureAirport} to {arrivalAirport}
+                    
         </h3>
         <h4>
-          {airline} {flightNumber}
+          Airline: {airline}, Flight Number: {flightNumber}
         </h4>
         <button>Book</button>
       </div>

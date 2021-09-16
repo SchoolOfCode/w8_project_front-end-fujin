@@ -25,7 +25,8 @@ function Display({ flights }) {
           }) => (
             <Flight
               key={uuidv4()}
-              dateTime={departure.passengerLocalTime}
+              depDateTime={departure.passengerLocalTime}
+              arrDateTime={arrival.passengerLocalTime}
               departureAirport={departure.airport.iata}
               arrivalAirport={arrival.airport.iata}
               airline={airline.iata}

@@ -27,6 +27,7 @@ function App() {
       `https://fujin-flights.herokuapp.com/flights/?DepartureAirport=${departurePort.code}&ArrivalAirport=${arrivalPort.code}&DepartureDate=${departureDate}`
     );
     const { payload } = await response.json();
+    // array.sort((a,b)=>a-b)
     setFlights(payload);
     setRequestMade(true);
     console.log(payload);
