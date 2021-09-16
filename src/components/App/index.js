@@ -33,7 +33,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <main className="App">
       <header>
         <h1>Swifter Flights</h1>
         <h2 className="subtitle">Getting you there fast!</h2>
@@ -55,7 +55,7 @@ function App() {
       ) : (
         ''
       )}
-    </div>
+    </main>
   );
 }
 

@@ -20,8 +20,3 @@ body {
   background: url('./images/wallpaperflare.com_wallpaper.jpg');
   color: var(--black);
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}

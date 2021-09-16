@@ -1,4 +1,5 @@
 .journey-input {
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   border-radius: 0.75em;
   padding: 0.8em;
@@ -6,5 +7,6 @@
 
 .airport-choice {
   font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.2rem;
 }
