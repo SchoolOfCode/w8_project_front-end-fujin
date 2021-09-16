@@ -44,6 +44,10 @@ function App() {
         <h1>Swifter Flights</h1>
         <h2 className="subtitle">Getting you there fast!</h2>
       </header>
+      
+      <h3>Departure Date</h3>
+      <input type="date" onChange={dateChange} value={departureDate}></input>
+
       <h3>
         Departure
         <Form
@@ -56,7 +60,7 @@ function App() {
       <br></br>
 
       <h3>
-        Arrival
+        Destination
         <Form
           journey="arrive"
           state={arrivalPort}
@@ -64,8 +68,7 @@ function App() {
         />
       </h3>
 
-      <h3>Departure Date</h3>
-      <input type="date" onChange={dateChange} value={departureDate}></input>
+      
 
       <br></br>
 
@@ -78,38 +81,7 @@ function App() {
       {!loading && requestMade ? (
         <Display
           requestMade={requestMade}
-          flights={[
-            {
-              dateTime: "20:00 15-09-2021",
-              departureAirport: "London Heathrow",
-              arrivalAirport: "Dulles",
-              airline: "British Airways",
-              flightNumber: "5",
-              changes: {
-                numberOfStops: 1,
-                intermediateAirports: {
-                  iata: [{ station: "Germany" }, { station: "Spain" }],
-                },
-              },
-              isElectronicTicketing: true,
-              isAutomatedCheckin: false,
-            },
-            {
-              dateTime: "20:00 15-09-2021",
-              departureAirport: "London Heathrow",
-              arrivalAirport: "Dulles",
-              airline: "British Airways",
-              flightNumber: "5",
-              changes: {
-                numberOfStops: 1,
-                intermediateAirports: {
-                  iata: [{ station: "Germany" }, { station: "Spain" }],
-                },
-              },
-              isElectronicTicketing: true,
-              isAutomatedCheckin: false,
-            },
-          ]}
+          flights={flights}
         />
       ) : (
         ""
