@@ -6,10 +6,7 @@ import Display from '../Display';
 function App() {
   const [departurePort, setDeparturePort] = useState({ name: ' ', code: ' ' });
   const [arrivalPort, setArrivalPort] = useState({ name: ' ', code: ' ' });
-
   const [flights, setFlights] = useState([]);
-
-  const [loading, setLoading] = useState(false);
   const [requestMade, setRequestMade] = useState(false);
 
   function chosenDepAirport(portName, portCode) {
@@ -51,7 +48,7 @@ function App() {
 
       <br></br>
 
-      {!loading && requestMade ? (
+      {requestMade ? (
         <Display requestMade={requestMade} flights={flights} />
       ) : (
         ''

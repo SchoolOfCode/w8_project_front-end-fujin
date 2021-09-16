@@ -11,6 +11,7 @@ function JourneyInput({ text, chosenAirport, state }) {
     getAiportByCity(city);
   }
 
+  console.log(state);
   async function getAiportByCity(city) {
     const response = await fetch(
       `https://fujin-flights.herokuapp.com/airports?city=${city}`
@@ -38,7 +39,7 @@ function JourneyInput({ text, chosenAirport, state }) {
       ></input>
 
       <Flights airports={airports} chosenAirport={chosenAirport} />
-      {state ? (
+      {state.length > 0 ? (
         <h4 className="airport-choice">You have chosen {state.name}</h4>
       ) : (
         ''
