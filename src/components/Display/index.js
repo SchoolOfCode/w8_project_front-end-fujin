@@ -7,9 +7,9 @@ function Display({ flights }) {
   return (
     <section className="display">
       {flights.length > 0 ? (
-        <h1>Available flights</h1>
+        <h2>Available flights</h2>
       ) : (
-        <h1>No available flights</h1>
+        <h2>No available flights</h2>
       )}
       {flights.map(
         ({
