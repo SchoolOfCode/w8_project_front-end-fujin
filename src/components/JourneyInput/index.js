@@ -39,7 +39,7 @@ function JourneyInput({ text, chosenAirport, state }) {
       ></input>
 
       <Flights airports={airports} chosenAirport={chosenAirport} />
-      {state ? (
+      {state.name.length > 1 ? (
         <h4 className="airport-choice">You have chosen {state.name}</h4>
       ) : (
         ''
