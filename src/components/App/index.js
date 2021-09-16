@@ -1,43 +1,42 @@
 import React, { useState } from "react";
 import "./App.css";
 import Form from "../Form";
-import Display from '../Display';
+import Display from "../Display";
 
 function App() {
   const [departurePort, setDeparturePort] = useState({ name: " ", code: " " });
   const [arrivalPort, setArrivalPort] = useState({ name: " ", code: " " });
-  const [departureDate, setDepartureDate] = useState((new Date()).toLocaleDateString('en-GB'));
-  const [flights, setFlights] = useState([])
+  const [departureDate, setDepartureDate] = useState(
+    new Date().toLocaleDateString("en-CA")
+  );
+  const [flights, setFlights] = useState([]);
 
   const [loading, setLoading] = useState(false);
   const [requestMade, setRequestMade] = useState(true);
 
-
-
   function chosenDepAirport(portName, portCode) {
-    setDeparturePort({name: portName, code: portCode });
+    setDeparturePort({ name: portName, code: portCode });
     // console.log(departurePort);
   }
 
   function chosenArrAirport(portName, portCode) {
-    setArrivalPort({name: portName, code: portCode });
+    setArrivalPort({ name: portName, code: portCode });
     // console.log(departurePort);
   }
 
   function dateChange(event) {
-    setDepartureDate(event.target.value)
-    console.log(departureDate)
+    setDepartureDate(event.target.value);
+    console.log(departureDate);
   }
 
   async function getFlights(departurePort, arrivalPort, departureDate) {
-    const response = await fetch(`http://localhost:5000/flights/?DepartureAirport=${departurePort.code}&ArrivalAirport=${arrivalPort.code}&DepartureDate=${departureDate}`);
+    const response = await fetch(
+      `http://localhost:5000/flights/?DepartureAirport=${departurePort.code}&ArrivalAirport=${arrivalPort.code}&DepartureDate=${departureDate}`
+    );
     const { payload } = await response.json();
     console.log(payload);
-    setFlights(payload) 
+    setFlights(payload);
   }
-
-
-
 
   return (
     <div className="App">
@@ -58,48 +57,53 @@ function App() {
 
       <h3>
         Arrival
-        <Form 
+        <Form
           journey="arrive"
           state={arrivalPort}
-          chosenAirport={chosenArrAirport}/>
+          chosenAirport={chosenArrAirport}
+        />
       </h3>
 
       <h3>Departure Date</h3>
-      <input type="date" onChange={dateChange} value={departureDate }></input>
+      <input type="date" onChange={dateChange} value={departureDate}></input>
 
       <br></br>
 
-      <button onClick={()=>getFlights(departurePort, arrivalPort, departureDate)}>Find flights</button>
+      <button
+        onClick={() => getFlights(departurePort, arrivalPort, departureDate)}
+      >
+        Find flights
+      </button>
 
       {!loading && requestMade ? (
         <Display
           requestMade={requestMade}
           flights={[
             {
-              dateTime: '20:00 15-09-2021',
-              departureAirport: 'London Heathrow',
-              arrivalAirport: 'Dulles',
-              airline: 'British Airways',
-              flightNumber: '5',
+              dateTime: "20:00 15-09-2021",
+              departureAirport: "London Heathrow",
+              arrivalAirport: "Dulles",
+              airline: "British Airways",
+              flightNumber: "5",
               changes: {
                 numberOfStops: 1,
                 intermediateAirports: {
-                  iata: [{ station: 'Germany' }, { station: 'Spain' }],
+                  iata: [{ station: "Germany" }, { station: "Spain" }],
                 },
               },
               isElectronicTicketing: true,
               isAutomatedCheckin: false,
             },
             {
-              dateTime: '20:00 15-09-2021',
-              departureAirport: 'London Heathrow',
-              arrivalAirport: 'Dulles',
-              airline: 'British Airways',
-              flightNumber: '5',
+              dateTime: "20:00 15-09-2021",
+              departureAirport: "London Heathrow",
+              arrivalAirport: "Dulles",
+              airline: "British Airways",
+              flightNumber: "5",
               changes: {
                 numberOfStops: 1,
                 intermediateAirports: {
-                  iata: [{ station: 'Germany' }, { station: 'Spain' }],
+                  iata: [{ station: "Germany" }, { station: "Spain" }],
                 },
               },
               isElectronicTicketing: true,
@@ -108,10 +112,10 @@ function App() {
           ]}
         />
       ) : (
-        ''
+        ""
       )}
-      
     </div>
-)}
+  );
+}
 
 export default App;
