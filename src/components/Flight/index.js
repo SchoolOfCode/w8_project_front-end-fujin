@@ -5,6 +5,8 @@ import "./flight.css";
 import tick from "../../images/checkBox.svg";
 import empty from "../../images/emptyCheckBox.svg";
 
+const url = 'http://localhost:5000/';
+
 function Flight({
   dateTime,
   departureAirport,
@@ -17,14 +19,21 @@ function Flight({
 }) {
   const [depAirportName, setDepAirportName] = useState("");
   const [arrAirportName, setArrAirportName] = useState("");
+  const [airlineName, setAirlineName] = useState("");
 
   async function getAirportName(airport, setAirport) {
-    const response = await fetch(`http://localhost:5000/airports/${airport}`);
+    const response = await fetch(`${url}airports/${airport}`);
     const { payload } = await response.json();
     setAirport(payload.airport_name);
   }
+  async function getAirlineName(airline) {
+    const response = await fetch(`${url}airlines/${airline}`);
+    const { payload } = await response.json();
+    setAirlineName(payload.airline);
+  }
   getAirportName(departureAirport, setDepAirportName);
   getAirportName(arrivalAirport, setArrAirportName);
+  getAirlineName(airline);
 
   return (
     <section className="flight">
@@ -33,7 +42,7 @@ function Flight({
           {dateTime} — {depAirportName} to {arrAirportName}
         </h3>
         <h4>
-          {airline} {flightNumber}
+          {airlineName} {flightNumber}
         </h4>
         <button>Book</button>
       </div>

@@ -16,7 +16,6 @@ function JourneyInput({ text, chosenAirport, state }) {
       `https://fujin-flights.herokuapp.com/airports?city=${city}`
     );
     const { payload } = await response.json();
-    console.log(payload);
     if (payload.length === 0) {
       setAirports([
         { airport_name: 'No valid aiports', city_name: 'Check spelling' },
