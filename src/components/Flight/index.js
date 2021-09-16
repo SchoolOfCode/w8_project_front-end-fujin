@@ -40,10 +40,10 @@ function Flight({
     <section className="flight">
       <div className="key-facts">
         <h3>
-          {depDateTime} - {arrDateTime} | {depAirportName} to {arrAirportName}
+          {depDateTime} - {arrDateTime} | {depAirportName} - {arrAirportName}
         </h3>
         <h4>
-          {airlineName}, Flight Number: {flightNumber}
+          {airlineName} | Flight Number {flightNumber}
         </h4>
         
         <button>Book</button>
