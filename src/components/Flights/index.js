@@ -1,16 +1,30 @@
-import React from 'react'
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import './flights.css';
 
-function Flights ({airports, chosenAirport}) {
-
-    return (
-        <div>
-            {airports.map((item) => {
-                return (
-                    <h5 key={item.id} onClick={() => chosenAirport(item.airport_name, item.airport_code)}>{item.airport_name} : {item.city_name}</h5>
-                );
-            })}
-        </div>
-    )
+function Flights({ airports, chosenAirport }) {
+  return (
+    <div className="airport-options">
+      {airports.map((item, index) => {
+        return (
+          <div key={uuidv4()}>
+            {index < 15 ? (
+              <button
+                className="airport-button"
+                onClick={() =>
+                  chosenAirport(item.airport_name, item.airport_code)
+                }
+              >
+                {item.airport_name} : {item.city_name}
+              </button>
+            ) : (
+              ''
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default Flights;
