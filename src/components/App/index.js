@@ -24,7 +24,7 @@ function App() {
 
   async function getFlights(departurePort, arrivalPort, departureDate) {
     const response = await fetch(
-      `http://localhost:5000/flights/?DepartureAirport=${departurePort.code}&ArrivalAirport=${arrivalPort.code}&DepartureDate=${departureDate}`
+      `https://fujin-flights.herokuapp.com/flights/?DepartureAirport=${departurePort.code}&ArrivalAirport=${arrivalPort.code}&DepartureDate=${departureDate}`
     );
     const { payload } = await response.json();
     setFlights(payload);

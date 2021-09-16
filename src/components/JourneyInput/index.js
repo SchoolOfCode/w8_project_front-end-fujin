@@ -12,7 +12,9 @@ function JourneyInput({ text, chosenAirport, state }) {
   }
 
   async function getAiportByCity(city) {
-    const response = await fetch(`http://localhost:5000/airports?city=${city}`);
+    const response = await fetch(
+      `https://fujin-flights.herokuapp.com/airports?city=${city}`
+    );
     const { payload } = await response.json();
     console.log(payload);
     if (payload.length === 0) {
