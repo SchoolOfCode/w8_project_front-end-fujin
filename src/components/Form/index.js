@@ -1,40 +1,42 @@
-import { useState } from "react";
-import Flights from '../Flights';
+import { useState } from 'react';
+import JourneyInput from '../JourneyInput';
+import './Form.css';
 
-function Form({ journey, state, chosenAirport }) {
-  const [city, setCity] = useState("");
-  const [airports, setAirports] = useState([]);
-  
-
-  function handleChange(event) {
-    setCity(event.target.value);
-    getAiportByCity(city)
+function Form({
+  departurePort,
+  arrivalPort,
+  getFlights,
+  state,
+  chosenArrAirport,
+  chosenDepAirport,
+}) {
+  const [departureDate, setDepartureDate] = useState(
+    new Date().toLocaleDateString('en-CA')
+  );
+  function dateChange(event) {
+    setDepartureDate(event.target.value);
+    console.log(departureDate);
   }
-
-  async function getAiportByCity(city) {
-    const response = await fetch(`http://localhost:5000/airports?city=${city}`);
-    const { payload } = await response.json();
-    if (payload.length === 0) {setAirports([{airport_name: "No valid aiports", city_name: "Check spelling"}])} else {setAirports(payload)};
-  }
-
-
   return (
-    <section journey={journey}>
-      <input
-        type="text"
-        name="city"
-        placeholder="Enter City"
-        onChange={handleChange}
-        value={city}
-        required
-      ></input>
-            
-      <Flights airports={airports} chosenAirport={chosenAirport} />
-
-
-      {state ? <h4>You have chosen {state.name}</h4> : ""}
-
-      
+    <section className="form">
+      <h3>Departure Date</h3>
+      <input type="date" onChange={dateChange} value={departureDate}></input>
+      <JourneyInput
+        text="Departure City"
+        state={state[0]}
+        chosenAirport={chosenDepAirport}
+      />
+      <JourneyInput
+        text="Destination City"
+        state={state[1]}
+        chosenAirport={chosenArrAirport}
+      />
+      <button
+        className="get-flights"
+        onClick={() => getFlights(departurePort, arrivalPort, departureDate)}
+      >
+        Find flights
+      </button>
     </section>
   );
 }
