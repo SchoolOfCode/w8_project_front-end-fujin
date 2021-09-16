@@ -6,6 +6,7 @@ function App() {
   const [departurePort, setDeparturePort] = useState({ name: " ", code: " " });
   const [arrivalPort, setArrivalPort] = useState({ name: " ", code: " " });
   const [departureDate, setDepartureDate] = useState((new Date()).toLocaleDateString('en-CA'));
+  const [flights, setFlights] = useState([])
 
   function chosenDepAirport(portName, portCode) {
     setDeparturePort({name: portName, code: portCode });
@@ -25,7 +26,8 @@ function App() {
   async function getFlights(departurePort, arrivalPort, departureDate) {
     const response = await fetch(`http://localhost:5000/flights/?DepartureAirport=${departurePort.code}&ArrivalAirport=${arrivalPort.code}&DepartureDate=${departureDate}`);
     const { payload } = await response.json();
-    console.log(payload);    
+    console.log(payload);
+    setFlights(payload) 
   }
 
   return (
@@ -34,7 +36,7 @@ function App() {
       <h3>
         Departure
         <Form
-          id="depart"
+          journey="depart"
           state={departurePort}
           chosenAirport={chosenDepAirport}
         />
@@ -45,7 +47,7 @@ function App() {
       <h3>
         Arrival
         <Form 
-          id="arrive"
+          journey="arrive"
           state={arrivalPort}
           chosenAirport={chosenArrAirport}/>
       </h3>

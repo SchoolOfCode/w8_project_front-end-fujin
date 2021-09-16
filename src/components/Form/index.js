@@ -1,23 +1,25 @@
 import { useState } from "react";
-// import button component here
+import Flights from '../Flights';
 
-function Form({ state, chosenAirport }) {
+function Form({ journey, state, chosenAirport }) {
   const [city, setCity] = useState("");
   const [airports, setAirports] = useState([]);
+  
 
   function handleChange(event) {
     setCity(event.target.value);
+    getAiportByCity(city)
   }
 
   async function getAiportByCity(city) {
     const response = await fetch(`http://localhost:5000/airports?city=${city}`);
     const { payload } = await response.json();
-    if (payload.length === 0 ) {setAirports([{airport_name: "No Aiports found", city_name: "Check spelling"}])} else {setAirports(payload)};
+    if (payload.length === 0) {setAirports([{airport_name: "No Aiports found", city_name: "Check spelling"}])} else {setAirports(payload)};
   }
 
 
   return (
-    <section>
+    <section journey={journey}>
       <input
         type="text"
         name="city"
@@ -26,20 +28,11 @@ function Form({ state, chosenAirport }) {
         value={city}
         required
       ></input>
-      <button onClick={() => getAiportByCity(city)}>Show Airports</button>
-      
-      
-      {airports.map((item) => {
-        return (
-          <li
-            onClick={() => chosenAirport(item.airport_name, item.airport_code)}
-          >
-            {item.airport_name} : {item.city_name}
-          </li>
-        );
-      })}
+            
+      <Flights airports={airports} chosenAirport={chosenAirport} />
 
-      {state ? <h5>You have chosen {state.name}</h5> : ""}
+
+      {state ? <h4>You have chosen {state.name}</h4> : ""}
 
       
     </section>
