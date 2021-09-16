@@ -14,7 +14,7 @@ function Form({ journey, state, chosenAirport }) {
   async function getAiportByCity(city) {
     const response = await fetch(`http://localhost:5000/airports?city=${city}`);
     const { payload } = await response.json();
-    if (payload.length === 0) {setAirports([{airport_name: "No Aiports found", city_name: "Check spelling"}])} else {setAirports(payload)};
+    if (payload.length === 0) {setAirports([{airport_name: "No valid aiports", city_name: "Check spelling"}])} else {setAirports(payload)};
   }
 
 
