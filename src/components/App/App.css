@@ -1,12 +1,13 @@
 .App header {
   position: relative;
-  background: var(--light-blue);
-  object-fit: cover;
+  /*background: var(--light-blue);*/
+  
   padding: 1em;
 
   text-align: center;
 }
 
+/*
 .App header::before {
   position: absolute;
   top: 0;
@@ -15,11 +16,12 @@
   bottom: 0;
   content: '';
 
-  background: url('../../images/artturi-jalli-WUYFbcqrtiw-unsplash.jpg');
+  background: var(--light-blue);
   background-size: cover;
 
   opacity: 0.75;
 }
+*/
 
 .App h1 {
   position: relative;

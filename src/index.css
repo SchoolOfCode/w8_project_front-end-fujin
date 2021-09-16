@@ -17,7 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: var(--light-blue);
+  background: url('./images/wallpaperflare.com_wallpaper.jpg');
   color: var(--black);
 }
 

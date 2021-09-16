@@ -12,7 +12,7 @@ function App() {
   const [flights, setFlights] = useState([]);
 
   const [loading, setLoading] = useState(false);
-  const [requestMade, setRequestMade] = useState(true);
+  const [requestMade, setRequestMade] = useState(false);
 
   function chosenDepAirport(portName, portCode) {
     setDeparturePort({ name: portName, code: portCode });
@@ -34,8 +34,9 @@ function App() {
       `http://localhost:5000/flights/?DepartureAirport=${departurePort.code}&ArrivalAirport=${arrivalPort.code}&DepartureDate=${departureDate}`
     );
     const { payload } = await response.json();
-    console.log(payload);
     setFlights(payload);
+    setRequestMade(true)
+    console.log(payload);
   }
 
   return (
