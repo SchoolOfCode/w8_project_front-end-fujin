@@ -6,17 +6,19 @@ import Display from '../Display';
 function App() {
   const [departurePort, setDeparturePort] = useState({ name: ' ', code: ' ' });
   const [arrivalPort, setArrivalPort] = useState({ name: ' ', code: ' ' });
+  const [depCityChosen, setDepCityChosen] = useState(false);
+  const [arrCityChosen, setArrCityChosen] = useState(false);
   const [flights, setFlights] = useState([]);
   const [requestMade, setRequestMade] = useState(false);
 
   function chosenDepAirport(portName, portCode) {
     setDeparturePort({ name: portName, code: portCode });
-    // console.log(departurePort);
+    setDepCityChosen(true);
   }
 
   function chosenArrAirport(portName, portCode) {
     setArrivalPort({ name: portName, code: portCode });
-    // console.log(departurePort);
+    setArrCityChosen(true);
   }
 
   async function getFlights(departurePort, arrivalPort, departureDate) {
@@ -38,6 +40,10 @@ function App() {
       </header>
 
       <Form
+        depCityChosen={depCityChosen}
+        setDepCityChosen={setDepCityChosen}
+        arrCityChosen={arrCityChosen}
+        setArrCityChosen={setArrCityChosen}
         departurePort={departurePort}
         arrivalPort={arrivalPort}
         getFlights={getFlights}

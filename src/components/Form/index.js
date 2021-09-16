@@ -3,6 +3,10 @@ import JourneyInput from '../JourneyInput';
 import './Form.css';
 
 function Form({
+  depCityChosen,
+  arrCityChosen,
+  setDepCityChosen,
+  setArrCityChosen,
   departurePort,
   arrivalPort,
   getFlights,
@@ -25,11 +29,15 @@ function Form({
         text="Departure City"
         state={state[0]}
         chosenAirport={chosenDepAirport}
+        setCityChosen={setDepCityChosen}
+        cityChosen={depCityChosen}
       />
       <JourneyInput
         text="Destination City"
         state={state[1]}
         chosenAirport={chosenArrAirport}
+        setCityChosen={setArrCityChosen}
+        cityChosen={arrCityChosen}
       />
       <button
         className="get-flights"
