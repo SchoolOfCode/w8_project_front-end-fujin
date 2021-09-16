@@ -2,16 +2,22 @@ import Flights from '../Flights';
 import { useState } from 'react';
 import './journeyInput.css';
 
-function JourneyInput({ text, chosenAirport, state }) {
+function JourneyInput({
+  cityChosen,
+  setCityChosen,
+  text,
+  chosenAirport,
+  state,
+}) {
   const [city, setCity] = useState('');
   const [airports, setAirports] = useState([]);
 
   function handleChange(event) {
     setCity(event.target.value);
+    setCityChosen(false);
     getAiportByCity(city);
   }
 
-  console.log(state);
   async function getAiportByCity(city) {
     const response = await fetch(
       `https://fujin-flights.herokuapp.com/airports?city=${city}`
@@ -38,8 +44,12 @@ function JourneyInput({ text, chosenAirport, state }) {
         required
       ></input>
 
-      <Flights airports={airports} chosenAirport={chosenAirport} />
-      {state ? (
+      <Flights
+        airports={airports}
+        chosenAirport={chosenAirport}
+        cityChosen={cityChosen}
+      />
+      {state.name.length > 1 ? (
         <h4 className="airport-choice">You have chosen {state.name}</h4>
       ) : (
         ''
