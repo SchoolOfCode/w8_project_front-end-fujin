@@ -1,7 +1,7 @@
-import React from 'react';
-import Flight from '../Flight';
-import { v4 as uuidv4 } from 'uuid';
-import './display.css';
+import React from "react";
+import Flight from "../Flight";
+import { v4 as uuidv4 } from "uuid";
+import "./display.css";
 
 function Display({ flights }) {
   return (
@@ -25,7 +25,8 @@ function Display({ flights }) {
           }) => (
             <Flight
               key={uuidv4()}
-              dateTime={departure.passengerLocalTime}
+              depDateTime={departure.passengerLocalTime}
+              arrDateTime={arrival.passengerLocalTime}
               departureAirport={departure.airport.iata}
               arrivalAirport={arrival.airport.iata}
               airline={airline.iata}
