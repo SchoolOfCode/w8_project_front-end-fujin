@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import "./App.css";
 import Form from "../Form";
+import Display from '../Display';
 
 function App() {
   const [departurePort, setDeparturePort] = useState({ name: " ", code: " " });
   const [arrivalPort, setArrivalPort] = useState({ name: " ", code: " " });
-  const [departureDate, setDepartureDate] = useState((new Date()).toLocaleDateString('en-CA'));
+  const [departureDate, setDepartureDate] = useState((new Date()).toLocaleDateString('en-GB'));
   const [flights, setFlights] = useState([])
+
+  const [loading, setLoading] = useState(false);
+  const [requestMade, setRequestMade] = useState(true);
+
+
 
   function chosenDepAirport(portName, portCode) {
     setDeparturePort({name: portName, code: portCode });
@@ -30,9 +36,15 @@ function App() {
     setFlights(payload) 
   }
 
+
+
+
   return (
-    <div>
-      <header>Swifter</header>
+    <div className="App">
+      <header>
+        <h1>Swifter Flights</h1>
+        <h2 className="subtitle">Getting you there fast!</h2>
+      </header>
       <h3>
         Departure
         <Form
@@ -58,13 +70,48 @@ function App() {
       <br></br>
 
       <button onClick={()=>getFlights(departurePort, arrivalPort, departureDate)}>Find flights</button>
+
+      {!loading && requestMade ? (
+        <Display
+          requestMade={requestMade}
+          flights={[
+            {
+              dateTime: '20:00 15-09-2021',
+              departureAirport: 'London Heathrow',
+              arrivalAirport: 'Dulles',
+              airline: 'British Airways',
+              flightNumber: '5',
+              changes: {
+                numberOfStops: 1,
+                intermediateAirports: {
+                  iata: [{ station: 'Germany' }, { station: 'Spain' }],
+                },
+              },
+              isElectronicTicketing: true,
+              isAutomatedCheckin: false,
+            },
+            {
+              dateTime: '20:00 15-09-2021',
+              departureAirport: 'London Heathrow',
+              arrivalAirport: 'Dulles',
+              airline: 'British Airways',
+              flightNumber: '5',
+              changes: {
+                numberOfStops: 1,
+                intermediateAirports: {
+                  iata: [{ station: 'Germany' }, { station: 'Spain' }],
+                },
+              },
+              isElectronicTicketing: true,
+              isAutomatedCheckin: false,
+            },
+          ]}
+        />
+      ) : (
+        ''
+      )}
       
     </div>
-
-    
-
-    
-  );
-}
+)}
 
 export default App;
