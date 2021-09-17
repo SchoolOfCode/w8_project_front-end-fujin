@@ -1,8 +1,8 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import './flights.css';
+import './airports.css';
 
-function Flights({ airports, chosenAirport, cityChosen }) {
+function Airports({ airports, chosenAirport, cityChosen }) {
   return (
     <div className="airport-options">
       {cityChosen
@@ -29,4 +29,4 @@ function Flights({ airports, chosenAirport, cityChosen }) {
   );
 }
 
-export default Flights;
+export default Airports;

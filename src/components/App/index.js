@@ -9,6 +9,7 @@ function App() {
   const [depCityChosen, setDepCityChosen] = useState(false);
   const [arrCityChosen, setArrCityChosen] = useState(false);
   const [flights, setFlights] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [requestMade, setRequestMade] = useState(false);
 
   function chosenDepAirport(portName, portCode) {
@@ -22,14 +23,34 @@ function App() {
   }
 
   async function getFlights(departurePort, arrivalPort, departureDate) {
+    setLoading(true);
     const response = await fetch(
       `https://fujin-flights.herokuapp.com/flights/?DepartureAirport=${departurePort.code}&ArrivalAirport=${arrivalPort.code}&DepartureDate=${departureDate}`
     );
     const { payload } = await response.json();
     // array.sort((a,b)=>a-b)
+    // Arrival time comes in as a string formatted xx:xx
+    // Split string into array and convert each one to a number
+    // compare the first index (the hour) of each item
+    // if they are different, sort them in ascending order
+    // If they are the same, compare the second index (the minute of each component) and sort them by ascending order
+    payload.sort((firstTrip, secondTrip) => {
+      const firstTripTime = firstTrip.arrival.passengerLocalTime
+        .split(':')
+        .map((element) => Number(element));
+
+      const secondTripTime = secondTrip.arrival.passengerLocalTime
+        .split(':')
+        .map((element) => Number(element));
+
+      if (firstTripTime[0] === secondTripTime[0]) {
+        return firstTripTime[1] - secondTripTime[1];
+      }
+      return firstTripTime[0] - secondTripTime[0];
+    });
     setFlights(payload);
     setRequestMade(true);
-    console.log(payload);
+    setLoading(false);
   }
 
   return (
@@ -40,6 +61,7 @@ function App() {
       </header>
 
       <Form
+        loading={loading}
         depCityChosen={depCityChosen}
         setDepCityChosen={setDepCityChosen}
         arrCityChosen={arrCityChosen}

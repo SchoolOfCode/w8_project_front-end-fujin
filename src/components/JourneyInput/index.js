@@ -1,4 +1,4 @@
-import Flights from '../Flights';
+import Airports from '../Airports';
 import { useState } from 'react';
 import './journeyInput.css';
 
@@ -44,7 +44,7 @@ function JourneyInput({
         required
       ></input>
 
-      <Flights
+      <Airports
         airports={airports}
         chosenAirport={chosenAirport}
         cityChosen={cityChosen}
