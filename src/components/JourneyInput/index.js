@@ -1,14 +1,21 @@
-import Flights from '../Flights';
+import Airports from '../Airports';
 import { useState } from 'react';
 import './journeyInput.css';
 
-function JourneyInput({ text, chosenAirport, state }) {
+function JourneyInput({
+  cityChosen,
+  setCityChosen,
+  text,
+  chosenAirport,
+  state,
+}) {
   const [city, setCity] = useState('');
   const [airports, setAirports] = useState([]);
 
   function handleChange(event) {
     setCity(event.target.value);
     getAiportByCity(event.target.value);
+    setCityChosen(false);
   }
 
   async function getAiportByCity(city) {
@@ -37,8 +44,12 @@ function JourneyInput({ text, chosenAirport, state }) {
         required
       ></input>
 
-      <Flights airports={airports} chosenAirport={chosenAirport} />
-      {state ? (
+      <Airports
+        airports={airports}
+        chosenAirport={chosenAirport}
+        cityChosen={cityChosen}
+      />
+      {state.name.length > 1 ? (
         <h4 className="airport-choice">You have chosen {state.name}</h4>
       ) : (
         ''

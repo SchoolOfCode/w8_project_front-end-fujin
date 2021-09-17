@@ -88,3 +88,8 @@
   border-bottom: 1px solid var(--grey);
   margin-bottom: 1em;
 }
+
+.option-available {
+  color: var(--dark-blue);
+  font-weight: 500;
+}
