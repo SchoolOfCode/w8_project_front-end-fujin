@@ -8,7 +8,7 @@ function JourneyInput({ text, chosenAirport, state }) {
 
   function handleChange(event) {
     setCity(event.target.value);
-    getAiportByCity(city);
+    getAiportByCity(event.target.value);
   }
 
   async function getAiportByCity(city) {
