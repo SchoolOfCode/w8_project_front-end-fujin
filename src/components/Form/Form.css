@@ -43,7 +43,7 @@
   grid-row: 6;
 }
 
-.airport-choice:last-of-type {
+.destination {
   grid-column: 2;
 }
 

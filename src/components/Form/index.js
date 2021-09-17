@@ -32,6 +32,7 @@ function Form({
         chosenAirport={chosenDepAirport}
         setCityChosen={setDepCityChosen}
         cityChosen={depCityChosen}
+        styleClass="departure"
       />
       <JourneyInput
         text="Destination City"
@@ -39,6 +40,7 @@ function Form({
         chosenAirport={chosenArrAirport}
         setCityChosen={setArrCityChosen}
         cityChosen={arrCityChosen}
+        styleClass="destination"
       />
       <button
         className="get-flights"
