@@ -52,17 +52,23 @@ function Flight({
         <FlightChanges changes={changes} />
         <section className="booking-options">
           <span>
-            <p>Electronic ticketing available:</p>
+            <p className={isElectronicTicketing ? 'option-available' : ''}>
+              Electronic ticketing available:
+            </p>
             <img
               src={isElectronicTicketing ? tick : empty}
               alt={isElectronicTicketing ? 'checkmark' : 'unticked box'}
+              className={isElectronicTicketing ? 'option-available' : ''}
             />
           </span>
           <span>
-            <p>Automated checkin available:</p>
+            <p className={isAutomatedCheckin ? 'option-available' : ''}>
+              Automated checkin available:
+            </p>
             <img
               src={isAutomatedCheckin ? tick : empty}
               alt={isAutomatedCheckin ? 'checkmark' : 'unticked box'}
+              className={isAutomatedCheckin ? 'option-available' : ''}
             />
           </span>
         </section>
