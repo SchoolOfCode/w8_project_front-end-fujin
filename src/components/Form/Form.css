@@ -43,6 +43,10 @@
   grid-row: 6;
 }
 
+.airport-choice:last-of-type {
+  grid-column: 2;
+}
+
 .get-flights {
   grid-row: 7;
   grid-column: 2 / -1;
