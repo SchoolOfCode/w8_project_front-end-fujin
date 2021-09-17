@@ -8,6 +8,7 @@ function JourneyInput({
   text,
   chosenAirport,
   state,
+  styleClass,
 }) {
   const [city, setCity] = useState('');
   const [airports, setAirports] = useState([]);
@@ -50,7 +51,9 @@ function JourneyInput({
         cityChosen={cityChosen}
       />
       {state.name.length > 1 ? (
-        <h4 className="airport-choice">You have chosen {state.name}</h4>
+        <h4 className={`airport-choice ${styleClass}`}>
+          You have chosen {state.name}
+        </h4>
       ) : (
         ''
       )}
