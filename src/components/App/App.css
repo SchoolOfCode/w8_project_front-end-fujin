@@ -27,6 +27,6 @@ footer {
   background: var(--dark-blue);
   margin-top: 3em;
 
-  height: calc(100vh - 95vh);
+  min-height: calc(100vh - 95vh);
   width: 100%;
 }
