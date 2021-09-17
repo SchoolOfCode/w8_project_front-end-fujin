@@ -27,6 +27,25 @@ function App() {
     );
     const { payload } = await response.json();
     // array.sort((a,b)=>a-b)
+    // Arrival time comes in as a string formatted xx:xx
+    // Split string into array and convert each one to a number
+    // compare the first index (the hour) of each item
+    // if they are different, sort them in ascending order
+    // If they are the same, compare the second index (the minute of each component) and sort them by ascending order
+    payload.sort((firstTrip, secondTrip) => {
+      const firstTripTime = firstTrip.arrival.passengerLocalTime
+        .split(':')
+        .map((element) => Number(element));
+
+      const secondTripTime = secondTrip.arrival.passengerLocalTime
+        .split(':')
+        .map((element) => Number(element));
+
+      if (firstTripTime[0] === secondTripTime[0]) {
+        return firstTripTime[1] - secondTripTime[1];
+      }
+      return firstTripTime[0] - secondTripTime[0];
+    });
     setFlights(payload);
     setRequestMade(true);
     console.log(payload);
