@@ -15,8 +15,8 @@ function JourneyInput({
 
   function handleChange(event) {
     setCity(event.target.value);
+    getAiportByCity(event.target.value);
     setCityChosen(false);
-    getAiportByCity(city);
   }
 
   async function getAiportByCity(city) {
