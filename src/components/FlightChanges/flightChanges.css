@@ -1,0 +1,20 @@
+.flight-changes h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-left: 0.25em;
+}
+
+.flight-changes ul {
+  list-style: url('../../images/airplane.svg');
+}
+
+.flight-changes li {
+  margin: 1em 0 0;
+  padding-left: 1em;
+}
+
+.booking-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}

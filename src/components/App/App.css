@@ -1,0 +1,32 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App header {
+  padding: 1em;
+  text-align: center;
+}
+
+.App h1 {
+  font-size: 3rem;
+  font-family: 'Bad Script', sans-serif;
+  letter-spacing: 0.06em;
+  color: var(--v-dark-blue);
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--v-dark-blue);
+}
+
+footer {
+  background: var(--dark-blue);
+  margin-top: 3em;
+
+  min-height: calc(100vh - 95vh);
+  width: 100%;
+}

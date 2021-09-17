@@ -1,0 +1,15 @@
+.airport-button {
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  text-decoration: underline;
+  border: none;
+  display: block;
+  background: var(--white);
+  border-radius: 0.75em;
+}
+
+.airport-button:hover {
+  background: var(--dark-blue);
+  color: var(--white);
+}
