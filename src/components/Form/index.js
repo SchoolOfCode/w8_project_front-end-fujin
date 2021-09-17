@@ -3,6 +3,7 @@ import JourneyInput from '../JourneyInput';
 import './Form.css';
 
 function Form({
+  loading,
   depCityChosen,
   arrCityChosen,
   setDepCityChosen,
@@ -42,8 +43,9 @@ function Form({
       <button
         className="get-flights"
         onClick={() => getFlights(departurePort, arrivalPort, departureDate)}
+        disabled={loading}
       >
-        Find flights
+        {loading ? 'Loading...' : 'Find flights'}
       </button>
     </section>
   );

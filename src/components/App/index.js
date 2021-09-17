@@ -9,6 +9,7 @@ function App() {
   const [depCityChosen, setDepCityChosen] = useState(false);
   const [arrCityChosen, setArrCityChosen] = useState(false);
   const [flights, setFlights] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [requestMade, setRequestMade] = useState(false);
 
   function chosenDepAirport(portName, portCode) {
@@ -22,6 +23,7 @@ function App() {
   }
 
   async function getFlights(departurePort, arrivalPort, departureDate) {
+    setLoading(true);
     const response = await fetch(
       `https://fujin-flights.herokuapp.com/flights/?DepartureAirport=${departurePort.code}&ArrivalAirport=${arrivalPort.code}&DepartureDate=${departureDate}`
     );
@@ -48,7 +50,7 @@ function App() {
     });
     setFlights(payload);
     setRequestMade(true);
-    console.log(payload);
+    setLoading(false);
   }
 
   return (
@@ -59,6 +61,7 @@ function App() {
       </header>
 
       <Form
+        loading={loading}
         depCityChosen={depCityChosen}
         setDepCityChosen={setDepCityChosen}
         arrCityChosen={arrCityChosen}
